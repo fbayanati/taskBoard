@@ -1,6 +1,7 @@
 import { Task, TaskStatus } from "./task.model";
 
 export type BoardFilter = 'all' | TaskStatus;
+
 export interface BoardState {
     readonly tasks: Task[];
     readonly selectedTaskId: string | null;
