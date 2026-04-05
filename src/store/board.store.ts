@@ -8,5 +8,8 @@ export const BoardStore = signalStore(
     withState(initialBoardState),
     withComputed((state) => ({
         filteredTasks: computed(() => state.filter() === 'all' ? state.tasks() : state.tasks().filter((task: Task) => task.status === state.filter())),
+        todoCount: computed(() => state.tasks().filter((task: Task) => task.status === 'todo').length),
+        inProgressCount: computed(() => state.tasks().filter((task: Task) => task.status === 'in-progress').length),
+        doneCount: computed(() => state.tasks().filter((task: Task) => task.status === 'done').length), 
     }))
 );
