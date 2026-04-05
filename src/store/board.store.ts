@@ -6,16 +6,33 @@ import { Task } from './task.model';
 export const BoardStore = signalStore(
   { providedIn: 'root' },
   withState(initialBoardState),
-  withComputed(state => ({
-    filteredTasks: computed(() =>
+  withComputed(state => {
+    const filteredTasks = computed(() =>
       state.filter() === 'all'
         ? state.tasks()
         : state.tasks().filter((task: Task) => task.status === state.filter())
-    ),
-    todoCount: computed(() => state.tasks().filter((task: Task) => task.status === 'todo').length),
-    inProgressCount: computed(
+    );
+    const todoCount = computed(
+      () => state.tasks().filter((task: Task) => task.status === 'todo').length
+    );
+    const inProgressCount = computed(
       () => state.tasks().filter((task: Task) => task.status === 'in-progress').length
-    ),
-    doneCount: computed(() => state.tasks().filter((task: Task) => task.status === 'done').length),
-  }))
+    );
+    const doneCount = computed(
+      () => state.tasks().filter((task: Task) => task.status === 'done').length
+    );
+    const completionRate = computed(() => {
+      const total = state.tasks().length;
+      const done = doneCount();
+      return total === 0 ? 0 : Math.round((done / total) * 100);
+    });
+
+    return {
+      filteredTasks,
+      todoCount,
+      inProgressCount,
+      doneCount,
+      completionRate,
+    };
+  })
 );
