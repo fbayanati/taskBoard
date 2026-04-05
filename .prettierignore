@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+coverage
+.vscode
+package-lock.json
+/.parcel-cache
+/.turbo
+.parcel-cache
+/.pnp
+/.pnp.js

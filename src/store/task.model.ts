@@ -16,5 +16,5 @@ export const InitializedTask: Task = {
   description: '',
   status: 'todo',
   priority: 'medium',
-  createdAt: new Date()
+  createdAt: new Date(),
 };
