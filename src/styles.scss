@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Set root font size so 1rem = 10px (62.5% of default 16px) */
+:root {
+  font-size: 62.5%;
+}
+
+/* Ensure body uses a sensible base font-size in rems (optional) */
+body {
+  font-size: 1.6rem; /* equals 16px */
+}
